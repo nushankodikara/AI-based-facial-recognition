@@ -57,21 +57,20 @@ project/
 
 
 1. **Initial Setup**
-```python
-app = FaceProcessor()
-app.run()
-```
+    - Run the application using following command
+    ```bash
+    python main.py
+    ```
 
 2. **Processing Known Faces**
-
-- Place images containing known faces in `unprocessed/known/`
-- Click "Process Unprocessed Images"
-- Enter names when prompted for each detected face
+    - Place images containing known faces in `unprocessed/known/`
+    - Click "Process Unprocessed Images"
+    - Enter names when prompted for each detected face
 
 3. **Recognizing Faces**
-- Click "Recognize Faces"
-- Select an image using the file picker
-- View results with color-coded boxes and legend
+    - Click "Recognize Faces"
+    - Select an image using the file picker
+    - View results with color-coded boxes and legend
 
 
 ## Future Improvements
