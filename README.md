@@ -2,12 +2,12 @@
 
 ## Overview
 
-This application is a facial recognition system built using Python that combines YOLOv8 for face detection and the `face_recognition` library for face recognition. It features a graphical user interface built with Tkinter for easy interaction.
+This application is a facial recognition system built using Python that combines YOLOv11-face for face detection and the `face_recognition` library for face recognition. It features a graphical user interface built with Tkinter for easy interaction.
 
 ## Technologies Used
 
 - Python 3.12
-- YOLOv8
+- YOLOv11-face
 - face_recognition
 - SQLite
 - OpenCV
@@ -46,7 +46,7 @@ project/
 
 ### 2. Face Recognition
 - File picker to select images for recognition
-- Detects faces using YOLOv8
+- Detects faces using YOLOv11-face
 - Matches faces against the database of known faces
 - Displays results with color-coded boxes
 - Shows a legend with names and confidence scores
