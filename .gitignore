@@ -1,0 +1,5 @@
+.venv
+unprocessed
+processed
+faces.db
+recognize
