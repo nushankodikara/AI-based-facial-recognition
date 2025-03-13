@@ -1,80 +1,118 @@
-# Face Recognition Application Documentation
+# AI-based Facial Recognition System
 
-## Overview
-
-This application is a facial recognition system built using Python that combines YOLOv11-face for face detection and the `face_recognition` library for face recognition. It features a graphical user interface built with Tkinter for easy interaction.
-
-## Technologies Used
-
-- Python 3.12
-- YOLOv11-face
-- face_recognition
-- SQLite
-- OpenCV
-- Tkinter
-- PIL (Python Imaging Library)
-
-
-## Prerequisites
-
-```bash
-pip install -r requirements
-```
-
-
-## Project Structure
-```
-project/
-├── main.py           # Main application file
-├── faces.db          # SQLite database
-├── unprocessed/      # Directory for unprocessed images
-│   └── known/        # Known faces to be processed
-└── processed/        # Directory for processed face images
-    └── known/        # Processed and cropped faces
-```
+This project provides a facial recognition system with both a GUI application and a REST API.
 
 ## Features
 
-### 1. Face Processing
-- Processes images from the unprocessed/known directory
-- Supports multiple image formats (jpg, png, webp, bmp, tiff, gif)
-- Detects multiple faces in a single image
-- Asks for names individually for each detected face
-- Stores processed faces in the database with unique IDs
-- Prevents reprocessing of already processed images
+- Face detection using YOLO (YOLOv11n-face)
+- Face recognition using face_recognition library
+- Database storage of known faces
+- GUI application for interactive use
+- REST API for programmatic access
 
+## Requirements
 
-### 2. Face Recognition
-- File picker to select images for recognition
-- Detects faces using YOLOv11-face
-- Matches faces against the database of known faces
-- Displays results with color-coded boxes
-- Shows a legend with names and confidence scores
-- Scrollable legend for multiple detections
+- Python 3.8+
+- Dependencies listed in requirements.txt
 
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/AI-based-facial-recognition.git
+cd AI-based-facial-recognition
+```
+
+2. Create a virtual environment and activate it:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
+
+3. Install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+4. Download the YOLOv11n-face model (if not already included):
+```bash
+# The model should be in the root directory as yolov11n-face.pt
+```
+
+## Directory Structure
+
+- `processed/known/`: Directory for storing processed face images
+- `unprocessed/known/`: Directory for storing unprocessed images
+- `temp/`: Directory for temporary files
+- `uploads/`: Directory for uploaded images via API
 
 ## Usage
 
+### GUI Application
 
-1. **Initial Setup**
-    - Run the application using following command
-    ```bash
-    python main.py
-    ```
+Run the GUI application:
 
-2. **Processing Known Faces**
-    - Place images containing known faces in `unprocessed/known/`
-    - Click "Process Unprocessed Images"
-    - Enter names when prompted for each detected face
+```bash
+python main.py
+```
 
-3. **Recognizing Faces**
-    - Click "Recognize Faces"
-    - Select an image using the file picker
-    - View results with color-coded boxes and legend
+The GUI application provides:
+- Processing of unprocessed images to extract faces
+- Recognition of faces in new images
 
+### REST API
 
-## Future Improvements
-- Add batch processing capabilities
-- Implement face recognition confidence threshold settings
-- Add export/import functionality for the face database
-- Add support for real-time video recognition
+Run the API server:
+
+```bash
+python api.py
+```
+
+The API server will start at http://localhost:8000 by default.
+
+## API Documentation
+
+Once the API is running, you can access the interactive API documentation at:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+### API Endpoints
+
+#### Person Management
+
+- `GET /persons`: Get all persons in the database
+- `GET /persons/{person_id}`: Get a specific person by ID
+- `POST /persons`: Create a new person with a face image
+- `PUT /persons/{person_id}`: Update a person's information
+- `DELETE /persons/{person_id}`: Delete a person and their face image
+
+#### Face Detection and Recognition
+
+- `POST /detect-faces`: Detect faces in an image without recognition
+- `POST /recognize`: Recognize faces in an image
+- `POST /upload-batch`: Upload multiple images for processing
+
+## Examples
+
+### Adding a New Person
+
+```bash
+curl -X POST "http://localhost:8000/persons" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "name=John Doe" \
+  -F "face_image=@/path/to/image.jpg"
+```
+
+### Recognizing Faces in an Image
+
+```bash
+curl -X POST "http://localhost:8000/recognize" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "image=@/path/to/image.jpg"
+```
+
+## License
+
+[MIT License](LICENSE)

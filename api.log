@@ -1,0 +1,43 @@
+2025-03-13 12:53:21,656 - face_recognition_api - INFO - API health check
+2025-03-13 12:53:31,152 - face_recognition_api - INFO - Received request to get all persons
+2025-03-13 12:53:31,153 - face_recognition_api - INFO - Returning 4 persons
+2025-03-13 12:54:42,918 - face_recognition_api - INFO - Received request to create person 'Chalinda' with image: 6d599af6-0a46-4fad-968e-4c9da5a89b27.jpg
+2025-03-13 12:54:42,919 - face_recognition_api - INFO - Processing image to detect faces
+2025-03-13 12:54:42,942 - face_recognition_api - INFO - Running face detection with YOLO model
+2025-03-13 12:54:44,073 - face_recognition_api - INFO - Found 1 faces in the image
+2025-03-13 12:54:44,077 - face_recognition_api - INFO - Saved face image to processed/known/person_5.jpg
+2025-03-13 12:54:44,078 - face_recognition_api - INFO - Added person to database with ID: 5
+2025-03-13 12:54:56,376 - face_recognition_api - INFO - Received request to get all persons
+2025-03-13 12:54:56,379 - face_recognition_api - INFO - Returning 5 persons
+2025-03-13 12:55:39,817 - face_recognition_api - INFO - Received face detection request for image: 3c00d0fc-3a12-4e5b-8cde-c8633e819b76.HEIC
+2025-03-13 12:55:39,818 - face_recognition_api - INFO - Processing image to detect faces
+2025-03-13 12:55:39,820 - face_recognition_api - ERROR - Could not read image data
+2025-03-13 12:55:39,821 - face_recognition_api - ERROR - Error during face detection: 400: Could not read image
+Traceback (most recent call last):
+  File "/Users/nushankodikara/Projects/AI-based-facial-recognition/api.py", line 451, in detect_faces
+    faces, img = process_image(image_data, conn)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nushankodikara/Projects/AI-based-facial-recognition/api.py", line 163, in process_image
+    raise HTTPException(status_code=400, detail="Could not read image")
+fastapi.exceptions.HTTPException: 400: Could not read image
+2025-03-13 12:56:41,363 - face_recognition_api - INFO - Received face detection request for image: 3c00d0fc-3a12-4e5b-8cde-c8633e819b76.jpg
+2025-03-13 12:56:41,365 - face_recognition_api - INFO - Processing image to detect faces
+2025-03-13 12:56:41,426 - face_recognition_api - INFO - Running face detection with YOLO model
+2025-03-13 12:56:41,631 - face_recognition_api - INFO - Found 2 faces in the image
+2025-03-13 12:56:41,728 - face_recognition_api - INFO - Detection completed. Found 2 faces.
+2025-03-13 12:57:07,122 - face_recognition_api - INFO - Received face recognition request for image: 3c00d0fc-3a12-4e5b-8cde-c8633e819b76.jpg
+2025-03-13 12:57:07,123 - face_recognition_api - INFO - Processing image to detect faces
+2025-03-13 12:57:07,179 - face_recognition_api - INFO - Running face detection with YOLO model
+2025-03-13 12:57:07,292 - face_recognition_api - INFO - Found 2 faces in the image
+2025-03-13 12:57:07,645 - face_recognition_api - INFO - Recognizing face against known faces
+2025-03-13 12:57:07,648 - face_recognition_api - INFO - Found 5 known faces in database
+2025-03-13 12:57:08,519 - face_recognition_api - INFO - Face recognized as Chalinda with confidence 0.57
+2025-03-13 12:57:08,698 - face_recognition_api - INFO - Recognizing face against known faces
+2025-03-13 12:57:08,698 - face_recognition_api - INFO - Found 5 known faces in database
+2025-03-13 12:57:09,500 - face_recognition_api - INFO - Face not recognized (below confidence threshold)
+2025-03-13 12:57:09,549 - face_recognition_api - INFO - Recognition completed. Found 2 faces.
+2025-03-13 12:59:10,321 - face_recognition_api - INFO - Received batch upload request with 3 images
+2025-03-13 12:59:10,323 - face_recognition_api - INFO - Saved uploaded file: uploads/batch_94f3bc82-b08e-47a5-8a59-8edcbcc751de/3c00d0fc-3a12-4e5b-8cde-c8633e819b76.jpg
+2025-03-13 12:59:10,324 - face_recognition_api - INFO - Saved uploaded file: uploads/batch_94f3bc82-b08e-47a5-8a59-8edcbcc751de/a9766ad5-1869-4b52-8c1d-335f512cdf4c.jpg
+2025-03-13 12:59:10,324 - face_recognition_api - INFO - Saved uploaded file: uploads/batch_94f3bc82-b08e-47a5-8a59-8edcbcc751de/6d599af6-0a46-4fad-968e-4c9da5a89b27.jpg
+2025-03-13 12:59:10,324 - face_recognition_api - INFO - Successfully uploaded 3 images to uploads/batch_94f3bc82-b08e-47a5-8a59-8edcbcc751de
