@@ -3,3 +3,6 @@ unprocessed
 processed
 faces.db
 recognize
+api.log
+temp
+uploads

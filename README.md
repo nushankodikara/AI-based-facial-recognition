@@ -116,3 +116,47 @@ curl -X POST "http://localhost:8000/recognize" \
 ## License
 
 [MIT License](LICENSE)
+
+## Docker Deployment
+
+The Face Recognition API can be deployed using Docker for easier setup and consistent environments.
+
+### Prerequisites for Docker Deployment
+
+- Docker installed on your system
+- Docker Compose installed on your system
+
+### Docker Setup
+
+1. Make sure the following files are in the project root:
+   - `api.py`
+   - `requirements.txt`
+   - `yolov11n-face.pt`
+   - `Dockerfile`
+   - `docker-compose.yml`
+
+2. Run the Docker container:
+
+```bash
+# Using the provided script
+./docker-run.sh
+
+# Or manually with Docker Compose
+docker-compose up -d
+```
+
+3. Access the API:
+   - API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+
+4. To stop the container:
+
+```bash
+# Using the provided script
+./docker-stop.sh
+
+# Or manually with Docker Compose
+docker-compose down
+```
+
+For more detailed information about the Docker setup, see [DOCKER_README.md](DOCKER_README.md).

@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  face-recognition-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: face-recognition-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the database file for persistence
+      - ./faces.db:/app/faces.db
+      # Mount the directories for persistent storage
+      - ./processed:/app/processed
+      - ./unprocessed:/app/unprocessed
+      - ./uploads:/app/uploads
+      - ./temp:/app/temp
+      # Mount the log file
+      - ./api.log:/app/api.log
+    restart: unless-stopped
+    environment:
+      - TZ=UTC
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
